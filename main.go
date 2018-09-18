@@ -40,7 +40,7 @@ func handleRoot(w http.ResponseWriter, r *http.Request) {
 
 	it, err := index.BrowseAll(algoliasearch.Map{"query": ""})
 	if err != nil {
-		log.Criticalf(ctx, "Error retrieving results from index")
+		log.Criticalf(ctx, fmt.Sprintf("Error retrieving results from index %v", err))
 		return
 	}
 
