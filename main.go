@@ -36,11 +36,12 @@ func handleRoot(w http.ResponseWriter, r *http.Request) {
 	index := client.InitIndex(algoliaIndex)
 
 	fmt.Fprintln(w, "Endpoint hit success")
-	log.Infof(ctx, "Getting index...")
+	log.Infof(ctx, "Getting index...%s", algoliaIndex)
 
 	it, err := index.BrowseAll(algoliasearch.Map{"query": ""})
 	if err != nil {
-		log.Errorf(ctx, "Error retrieving results from index")
+		log.Criticalf(ctx, "Error retrieving results from index")
+		return
 	}
 
 	objects := []algoliasearch.Object{}
