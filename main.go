@@ -35,5 +35,5 @@ func handleRoot(w http.ResponseWriter, r *http.Request) {
 	ctx := appengine.NewContext(r)
 
 	log.Infof(ctx, "")
-	fmt.Fprintln(w, fmt.Sprintf("%v", 1))
+	fmt.Fprintln(w, fmt.Sprintf("%v", 2))
 }
