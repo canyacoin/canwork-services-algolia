@@ -9,6 +9,7 @@ import (
 	"github.com/algolia/algoliasearch-client-go/algoliasearch"
 	"google.golang.org/appengine"
 	"google.golang.org/appengine/log"
+	"google.golang.org/appengine/urlfetch"
 )
 
 var (
@@ -34,6 +35,9 @@ func handleRoot(w http.ResponseWriter, r *http.Request) {
 
 	client := algoliasearch.NewClient(algoliaAppID, algoliaAPIKey)
 	index := client.InitIndex(algoliaIndex)
+
+	googleClient := urlfetch.Client(ctx)
+	client.SetHTTPClient(googleClient)
 
 	fmt.Fprintln(w, "Endpoint hit success")
 	log.Infof(ctx, "Getting index...%s", algoliaIndex)
