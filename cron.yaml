@@ -1,6 +1,6 @@
 cron:
 - description: "daily algolia randomisation"
-  url: /
+  url: /aloglia-randomiser
   target: algolia-randomisation
   schedule: every day 12:00
   timezone: Australia/NSW
